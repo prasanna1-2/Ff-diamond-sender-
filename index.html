@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FF Diamond Sender</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #00ffff88;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #00ffff;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+
+    input, select {
+      background-color: #1e1e1e;
+      color: white;
+    }
+
+    button {
+      background-color: #00ffff;
+      color: black;
+      font-weight: bold;
+      margin-top: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #00cccc;
+    }
+
+    .note {
+      margin-top: 15px;
+      font-size: 12px;
+      color: #0f0;
+      text-align: center;
+    }
+
+    .processing {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #ff0;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .success {
+      color: #0f0;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>FF Diamond Sender</h1>
+    <form id="diamondForm">
+      <!-- Step 1: UID -->
+      <label for="player-id">Step 1: Enter your Free Fire UID</label>
+      <input type="text" id="player-id" placeholder="Enter UID" required />
+
+      <!-- Step 2: Server (hidden initially) -->
+      <div id="server-section" class="hidden">
+        <label for="region">Step 2: Select Server</label>
+        <select id="region" required>
+          <option value="">Choose Server</option>
+          <option value="BD">🇧🇩 BD Server</option>
+          <option value="IND">🇮🇳 IND Server</option>
+          <option value="VET">🇻🇳 VET Server</option>
+          <option value="PAK">🇵🇰 PAK Server</option>
+        </select>
+      </div>
+
+      <!-- Step 3: Diamonds (hidden initially) -->
+      <div id="diamond-section" class="hidden">
+        <label for="diamonds">Step 3: Select Diamonds</label>
+        <select id="diamonds" required>
+          <option value="">Select amount</option>
+          <option value="100">100 Diamonds</option>
+          <option value="310">310 Diamonds</option>
+          <option value="520">520 Diamonds</option>
+          <option value="1060">1060 Diamonds</option>
+          <option value="2180">2180 Diamonds</option>
+        </select>
+      </div>
+
+      <!-- Send Button (hidden initially) -->
+      <button type="submit" class="hidden" id="sendButton">Send Diamonds</button>
+    </form>
+
+    <!-- Fake Processing Status -->
+    <p class="note">Note: The diamonds will be sent successfully.</p>
+    <div id="status" class="processing"></div>
+  </div>
+
+  <script>
+    const playerIdInput = document.getElementById('player-id');
+    const serverSection = document.getElementById('server-section');
+    const diamondSection = document.getElementById('diamond-section');
+    const sendButton = document.getElementById('sendButton');
+    const regionSelect = document.getElementById('region');
+    const diamondSelect = document.getElementById('diamonds');
+    const form = document.getElementById('diamondForm');
+    const status = document.getElementById('status');
+
+    // Show server when UID is entered
+    playerIdInput.addEventListener('input', () => {
+      if (playerIdInput.value.trim() !== "") {
+        serverSection.classList.remove('hidden');
+      } else {
+        serverSection.classList.add('hidden');
+        diamondSection.classList.add('hidden');
+        sendButton.classList.add('hidden');
+      }
+    });
+
+    // Show diamonds when server is selected
+    regionSelect.addEventListener('change', () => {
+      if (regionSelect.value !== "") {
+        diamondSection.classList.remove('hidden');
+      } else {
+        diamondSection.classList.add('hidden');
+        sendButton.classList.add('hidden');
+      }
+    });
+
+    // Show send button when diamonds selected
+    diamondSelect.addEventListener('change', () => {
+      if (diamondSelect.value !== "") {
+        sendButton.classList.remove('hidden');
+      } else {
+        sendButton.classList.add('hidden');
+      }
+    });
+
+    // Send button logic
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const steps = [
+        "Fetching Player Info...",
+        "Verifying UID...",
+        "Connecting to Selected Server...",
+        "Sending Diamonds...",
+        "✅ Diamonds Sent Successfully!"
+      ];
+
+      let index = 0;
+      status.innerText = steps[index];
+
+      const interval = setInterval(() => {
+        index++;
+        if (index < steps.length) {
+          status.innerText = steps[index];
+        } else {
+          clearInterval(interval);
+        }
+      }, 2000); // 10 seconds total
+    });
+  </script>
+</body>
+</html>
+<script async="async" data-cfasync="false" src="//pl26621013.profitableratecpm.com/261fcb5ef995cf6b3ee45077a14d7574/invoke.js"></script>
+<div id="container-261fcb5ef995cf6b3ee45077a14d7574"></div>
+
+
+CREATED BY PRASANNA SAPKOTA 
